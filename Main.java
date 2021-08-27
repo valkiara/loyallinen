@@ -1,5 +1,14 @@
+import memento.Editor;
+import memento.History;
+
 class Main {
   public static void main(String[] args) {
-    System.out.println("Hello world!");
+    var history = new History();
+    var editor = new Editor();
+    editor.setContent("b");
+    history.push(editor.createState());
+    editor.setContent("e");
+    editor.restoreState(history.pop());
+    System.out.println(editor.getContent());
   }
 }
